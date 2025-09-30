@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBox", "SandBox\SandBox.csproj", "{4397BDB6-7C95-40B1-9587-603443762F13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypt", "Crypt\Crypt.csproj", "{30040C79-EBEB-46AE-A1BF-1DAD3A120F9E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text", "Text\Text.csproj", "{2E8BDBD6-2A6D-4CB3-865F-BD4BC2861075}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheoryDemonstator", "TheoryDemonstator\TheoryDemonstator.csproj", "{6EC602D8-7B44-4D4D-914C-FD5890BE4EBF}"
@@ -28,10 +26,6 @@ Global
 		{4397BDB6-7C95-40B1-9587-603443762F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4397BDB6-7C95-40B1-9587-603443762F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4397BDB6-7C95-40B1-9587-603443762F13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30040C79-EBEB-46AE-A1BF-1DAD3A120F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30040C79-EBEB-46AE-A1BF-1DAD3A120F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30040C79-EBEB-46AE-A1BF-1DAD3A120F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30040C79-EBEB-46AE-A1BF-1DAD3A120F9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E8BDBD6-2A6D-4CB3-865F-BD4BC2861075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E8BDBD6-2A6D-4CB3-865F-BD4BC2861075}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E8BDBD6-2A6D-4CB3-865F-BD4BC2861075}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Crypt\Crypt.csproj" />
     <ProjectReference Include="..\Std\Std.csproj" />
     <ProjectReference Include="..\Text\Text.csproj" />
     <ProjectReference Include="..\TheoryDemonstator\TheoryDemonstator.csproj" />

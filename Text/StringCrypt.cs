@@ -1,4 +1,4 @@
-﻿namespace Crypt
+﻿namespace Text
 {
     using System.Linq;
 
