@@ -18,7 +18,7 @@ Console.WriteLine(GitHub);
 
 ```C#
 while (!ConsoleHelper.TryReadLine(out string? input))
-            Console.WriteLine("Некорректный ввод. Повторите попытку.");
+    Console.WriteLine("Некорректный ввод. Повторите попытку.");
 ```
 
 ```C#
