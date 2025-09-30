@@ -4,12 +4,12 @@
 
     public static class ConsoleHelper
     {
-        public static bool TryReadLine(out string? input)
+        public static bool TryReadLine(out string input)
         {
             string? temp = Console.ReadLine();
             if (string.IsNullOrEmpty(temp))
             {
-                input = null;
+                input = string.Empty;
                 return false;
             }
             else
