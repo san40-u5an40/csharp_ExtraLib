@@ -1,6 +1,4 @@
-﻿
-
-public static class Program
+﻿public static class Program
 {
     private const string programName = "*НАЗВАНИЕ ПРОГРАММЫ*";
     private const byte displayLength = 130;

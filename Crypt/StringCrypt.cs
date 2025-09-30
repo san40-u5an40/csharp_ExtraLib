@@ -4,9 +4,9 @@
 
     public static class StringCrypter
     {
-        public enum Type { Hex, Standard }
+        public enum Type { Hex, Std }
 
-        public static string Crypt(this string input, int key, Type cryptType = Type.Standard)
+        public static string Crypt(this string input, int key, Type cryptType = Type.Std)
         {
             if (string.IsNullOrEmpty(input))
                 return "";
@@ -24,7 +24,7 @@
             }
         }
 
-        public static string Decrypt(this string input, int key, Type cryptType = Type.Standard)
+        public static string Decrypt(this string input, int key, Type cryptType = Type.Std)
         {
             if (string.IsNullOrEmpty(input))
                 return "";
