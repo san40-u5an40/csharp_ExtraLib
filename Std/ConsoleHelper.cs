@@ -2,8 +2,16 @@
 
 namespace Std;
 
+/// <summary>
+/// Класс со вспомогательными методами по работе в консоли
+/// </summary>
 public static class ConsoleHelper
 {
+    /// <summary>
+    /// Метод, похожий на подобные try-методы, пробующий записать строку из консоли
+    /// </summary>
+    /// <param name="input">out-параметр для хранения результирующей строки</param>
+    /// <returns>Успешность записи строки из консоли</returns>
     public static bool TryReadLine(out string input)
     {
         string? temp = Console.ReadLine();
@@ -19,13 +27,18 @@ public static class ConsoleHelper
         }
     }
 
-    public static void WriteColor(string? input, ConsoleColor color)
+    /// <summary>
+    /// Выводит переданное сообщение в цветном формате без '\n'
+    /// </summary>
+    /// <param name="msg">Сообщение для вывода</param>
+    /// <param name="color">Цвет вывода</param>
+    public static void WriteColor(string? msg, ConsoleColor color)
     {
-        if (string.IsNullOrEmpty(input))
+        if (string.IsNullOrEmpty(msg))
             return;
 
         Console.ForegroundColor = color;
-        Console.Write(input);
+        Console.Write(msg);
         Console.ResetColor();
     }
 }

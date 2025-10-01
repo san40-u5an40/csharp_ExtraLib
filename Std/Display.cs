@@ -3,13 +3,21 @@ using System.Text;
 
 namespace Std;
 
+/// <summary>
+/// Класс для настройки консольного окна, а также вывода дисплея
+/// </summary>
 public static class Display
 {
-    // Настройки окна консоли:
-    //   - Установка заголовка
-    //   - Установка ширины (длина дисплея + небольшое пространство)
-    //   - Отключение видимости курсора
-    //   - Установка юникода
+    /// <summary>
+    /// Настраивает окно консоли:
+    /// - Устанавливает заголовок окна в соответствии с названием программы
+    /// - Устанавливает ширину окна (длина дисплея + небольшое пространство)
+    /// - Отключает видимость курсора
+    /// - Устанавливает кодировку: юникод
+    /// </summary>
+    /// <param name="displayLength">Длина дисплея</param>
+    /// <param name="displaySpace">Свободное пространство между дисплеем и краем окна (рекомендуется не меньше 5)</param>
+    /// <param name="programName">Название программы</param>
     public static void WindowSetup(byte displayLength, byte displaySpace, string programName = "Default Program")
     {
         Console.Title = programName;
@@ -18,9 +26,32 @@ public static class Display
         Console.InputEncoding = Encoding.Unicode;
     }
 
+    /// <summary>
+    /// Тип дисплея:
+    /// <list type="bullet">
+    ///    <item>
+    ///        <term>Start</term>
+    ///        <description>После плашки дисплея добавляется '\n'</description>
+    ///    </item>
+    ///    <item>
+    ///        <term>End</term>
+    ///        <description>'\n' добавляется перед дисплеем</description>
+    ///    </item>
+    ///    <item>
+    ///        <term>Center</term>
+    ///        <description>'\n' добавляется как до, так и после дисплея</description>
+    ///    </item>
+    /// </list>
+    /// </summary>
     public enum Type { Start, End, Center }
 
-    // Вывод дисплея с поставленными переносами строки, в зависимости от типа дисплея: начальный, серединный, заключительный
+    /// <summary>
+    /// Выводит дисплей
+    /// </summary>
+    /// <param name="typeDisp">Тип дисплея представленный перечислением Display.Type</param>
+    /// <param name="length">Длина дисплея (рекомендуемый размер от 60)</param>
+    /// <param name="charDisp">Знак дисплея</param>
+    /// <param name="msgs">Сообщения для отображения на дисплее</param>
     public static void Print(Type typeDisp, int length, char charDisp, params string[]? msgs)
     {
         if(msgs == null)

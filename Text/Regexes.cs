@@ -3,9 +3,17 @@ using System.Text.RegularExpressions;
 
 namespace Text;
 
+/// <summary>
+/// Класс для шаблонных преобразований текста с помощью регулярных выражений
+/// </summary>
 public static class Regexes
 {
-    // Меняет все email-адреса из текста на replaceStr
+    /// <summary>
+    /// Меняет все email-адреса из текста на указанное значение
+    /// </summary>
+    /// <param name="text">Исходный текст для поиска и замены email-адресов</param>
+    /// <param name="replacesStr">Значение, на которое будет заменён найденный email</param>
+    /// <returns>Текст с заменёнными адресами</returns>
     public static string EmailReplace(string? text, string? replacesStr)
     {
         if (string.IsNullOrEmpty(text))
@@ -21,7 +29,11 @@ public static class Regexes
                              TimeSpan.FromMilliseconds(100));
     }
 
-    // Парсит из текста все href-ссылки и их содержимое, возвращает коллекцию найденных элементов
+    /// <summary>
+    /// Парсит из текста все href-ссылки и их содержимое
+    /// </summary>
+    /// <param name="html">Исходный текст для поиска href-тегов и их содержимого</param>
+    /// <returns>Коллекция найденных элементов MatchCollection? с группами "href" и "text"</returns>
     public static MatchCollection? HrefParse(string? html)
     {
         if (string.IsNullOrEmpty(html))
@@ -33,7 +45,11 @@ public static class Regexes
                              TimeSpan.FromMilliseconds(1000));
     }
 
-    // Очищает строку от тегов
+    /// <summary>
+    /// Очищает строку от тегов
+    /// </summary>
+    /// <param name="input">Исходный текст для очистки от тегов</param>
+    /// <returns>Очищенный текст</returns>
     public static string TagClear(string? input)
     {
         if (string.IsNullOrEmpty(input))
@@ -46,13 +62,18 @@ public static class Regexes
                              TimeSpan.FromMilliseconds(100));
     }
 
-    // Достаёт из строки все номера телефонов в формате числа long (без первых "8" или "+7")
-    public static long PhoneParse(string? number)
+    /// <summary>
+    /// Достаёт из строки номер телефона в формате long<br/>
+    /// Удобно использовать вместе с форматирование подобного вида: <c>$"{longNumber:+7 (###) ###-##-##}"</c>
+    /// </summary>
+    /// <param name="phone">Номер в строковом формате</param>
+    /// <returns>Указанный номер формате числа long без первых "+7" или "8"</returns>
+    public static long PhoneParse(string? phone)
     {
-        if (string.IsNullOrEmpty(number))
+        if (string.IsNullOrEmpty(phone))
             return 0;
 
-        string numbers = Regex.Replace(number,
+        string numbers = Regex.Replace(phone.Trim(),
                                        @"^\+?\s?7|^8|\D",
                                        string.Empty,
                                        RegexOptions.Compiled,

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Std;
 
+/// <summary>
+/// Класс со вспомогательными методами для работы с числами
+/// </summary>
 public static class NumHelper
 {
     private enum Num
@@ -37,6 +40,9 @@ public static class NumHelper
         девяносто = 90
     }
 
+    /// <summary>
+    /// Отображает число в буквенном формате <example>22 → двадцать два</example>
+    /// </summary>
     public static string InWord(this int i)
     {
         // todo: Добавить поддержку большего диапазона чисел
@@ -49,6 +55,13 @@ public static class NumHelper
             return $"{(Num)(i - i % 10) + " " + (Num)(i % 10)}";
     }
 
+    /// <summary>
+    /// Позволяет перебирать числовое значение в цикле foreach<br/>
+    /// <example>
+    ///     foreach(int i in 20)
+    ///     // return: 0, 1, 2, 3, 4...
+    /// </example>
+    /// </summary>
     public static IEnumerator<int> GetEnumerator(this int number)
     {
         int k = number > 0 ? number : 0;
