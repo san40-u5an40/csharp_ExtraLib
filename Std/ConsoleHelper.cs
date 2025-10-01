@@ -1,32 +1,31 @@
-﻿namespace Std
+﻿using System;
+
+namespace Std;
+
+public static class ConsoleHelper
 {
-    using System;
-
-    public static class ConsoleHelper
+    public static bool TryReadLine(out string input)
     {
-        public static bool TryReadLine(out string input)
+        string? temp = Console.ReadLine();
+        if (string.IsNullOrEmpty(temp))
         {
-            string? temp = Console.ReadLine();
-            if (string.IsNullOrEmpty(temp))
-            {
-                input = string.Empty;
-                return false;
-            }
-            else
-            {
-                input = temp;
-                return true;
-            }
+            input = string.Empty;
+            return false;
         }
-
-        public static void WriteColor(string? input, ConsoleColor color)
+        else
         {
-            if (string.IsNullOrEmpty(input))
-                return;
-
-            Console.ForegroundColor = color;
-            Console.Write(input);
-            Console.ResetColor();
+            input = temp;
+            return true;
         }
+    }
+
+    public static void WriteColor(string? input, ConsoleColor color)
+    {
+        if (string.IsNullOrEmpty(input))
+            return;
+
+        Console.ForegroundColor = color;
+        Console.Write(input);
+        Console.ResetColor();
     }
 }

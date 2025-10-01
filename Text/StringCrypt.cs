@@ -1,54 +1,50 @@
-﻿namespace Text
+﻿using System.Linq;
+
+namespace Text;
+
+public static class StringCrypter
 {
-    using System.Linq;
+    public enum Type { Hex, Std }
 
-    public static class StringCrypter
+    public static string Crypt(this string input, int key, Type cryptType = Type.Std)
     {
-        public enum Type { Hex, Std }
+        if (string.IsNullOrEmpty(input))
+            return "";
 
-        public static string Crypt(this string input, int key, Type cryptType = Type.Std)
+        if(cryptType == Type.Hex)
         {
-            if (string.IsNullOrEmpty(input))
-                return "";
-
-            switch (cryptType)
-            {
-                case Type.Hex:
-                    var cryptedCharsHex = input
-                        .Select(p => $"{p + key:X}")
-                        .ToArray<string>();
-                    return string.Join(' ', cryptedCharsHex);
-
-                default:
-                    return ShiftChars(input, key);
-            }
+            var cryptedCharsHex = input
+                    .Select(p => $"{p + key:X}")
+                    .ToArray<string>();
+            return string.Join(' ', cryptedCharsHex);
         }
 
-        public static string Decrypt(this string input, int key, Type cryptType = Type.Std)
+        return ShiftChars(input, key);
+    }
+
+    public static string Decrypt(this string input, int key, Type cryptType = Type.Std)
+    {
+        if (string.IsNullOrEmpty(input))
+            return "";
+
+        if (cryptType == Type.Hex)
         {
-            if (string.IsNullOrEmpty(input))
-                return "";
+            var decryptedCharsHex = input
+                    .Split(' ')
+                    .Select(p => (char)(int.Parse(p, System.Globalization.NumberStyles.HexNumber) + key))
+                    .ToArray<char>();
+            return new string(decryptedCharsHex);
 
-            switch (cryptType)
-            {
-                case Type.Hex:
-                    var decryptedCharsHex = input
-                        .Split(' ')
-                        .Select(p => (char)(int.Parse(p, System.Globalization.NumberStyles.HexNumber) + key))
-                        .ToArray<char>();
-                    return new string(decryptedCharsHex);
-
-                default:
-                    return ShiftChars(input, key);
-            }
         }
 
-        private static string ShiftChars(string input, int key)
-        {
-            var shiftedChars = input
-                        .Select(p => (char)(p + key))
-                        .ToArray<char>();
-            return new string(shiftedChars);
-        }
+        return ShiftChars(input, key);
+    }
+
+    private static string ShiftChars(string input, int key)
+    {
+        var shiftedChars = input
+                    .Select(p => (char)(p + key))
+                    .ToArray<char>();
+        return new string(shiftedChars);
     }
 }

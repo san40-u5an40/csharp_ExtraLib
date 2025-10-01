@@ -1,13 +1,12 @@
-﻿namespace Std
-{
-    using System;
+﻿using System;
 
-    public class Counter
+namespace Std;
+
+public class Counter
+{
+    public static Func<int> Create(int startValue)
     {
-        public static Func<int> Create(int startValue)
-        {
-            int cnt = startValue;
-            return () => cnt++;
-        }
+        int cnt = startValue;
+        return () => cnt++;
     }
 }
