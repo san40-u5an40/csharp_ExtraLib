@@ -45,7 +45,7 @@ public static class NumHelper
     /// </summary>
     public static string InWord(this int i)
     {
-        // todo: Добавить поддержку большего диапазона чисел
+        // TODO: Добавить поддержку большего диапазона чисел
 
         if (i < 0 || i >= 100)
             throw new ArgumentException("Числа из данного диапазона не поддерживаются");
