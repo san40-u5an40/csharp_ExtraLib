@@ -7,15 +7,18 @@
     public static void Main(string[] args)
     {
         Start(out Stopwatch timer);
-        //Console.ReadKey();
 
-        
+        //Console.Write("Нажмите любую клавишу для продолжения...");
+        //Console.ReadKey();
+        //Console.Write('\r' + new string(' ', displayLength));
+
+
 
         End(ref timer);
         //Console.ReadKey();
     }
 
-
+    
 
     private static void Start(out Stopwatch timer)
     {
