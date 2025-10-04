@@ -12,13 +12,13 @@
         //Console.ReadKey();
         //Console.Write('\r' + new string(' ', displayLength));
 
-
+        
 
         End(ref timer);
         //Console.ReadKey();
     }
 
-    
+
 
     private static void Start(out Stopwatch timer)
     {
@@ -52,11 +52,11 @@
             , $"Время выполнения: {timer.ElapsedMilliseconds} мс. или {timer.ElapsedMilliseconds / 1000} сек."
 #endif
         );
-    }
-}
 
 #if DEBUG
-//[DebuggerDisplay("")]
+        Reflection.Print();
 #endif
+    }
+}
 
 

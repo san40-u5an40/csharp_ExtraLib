@@ -62,7 +62,6 @@ public static class StringCrypter
                     .Select(p => (char)(int.Parse(p, System.Globalization.NumberStyles.HexNumber) + key))
                     .ToArray<char>();
             return new string(decryptedCharsHex);
-
         }
 
         return ShiftChars(input, key);
