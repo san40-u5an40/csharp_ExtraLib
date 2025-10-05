@@ -30,10 +30,10 @@ public class ReflectionAttribute : Attribute
 public static class Reflection
 {
     // Визуальная иерархия информации
-    private const string zeroLevel = "   ";
-    private const string firstLevel = "   |  ";
-    private const string secondLevel = "   |  |  ";
-    private const string thirdLevel = "   |  |     ";
+    private const string zeroLevel = "|   ";
+    private const string firstLevel = "|   |  ";
+    private const string secondLevel = "|   |  |  ";
+    private const string thirdLevel = "|   |  |     ";
 
     // Разделитель информации о fields
     private const string separator = " | ";
@@ -246,5 +246,70 @@ public static class Reflection
 
         // Сброс цвета
         Console.ResetColor();
+    }
+
+    /// <summary>
+    /// Метод для рефлексивного анализа сборки
+    /// </summary>
+    /// <param name="path">Путь до сборки</param>
+    /// <param name="flags">Флаги получения полей, методов и конструкторов</param>
+    public static void Print(string? path, BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+    {
+        // Проверка на наличие переданного пути
+        if (string.IsNullOrEmpty(path))
+            return;
+
+        // Защита от ошибок открытия сборки
+        try
+        {
+            // Открытие сборки
+            var assembly = Assembly.LoadFrom(path);
+
+            // Установка цвета вывода
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            // Получение имени сборки
+            var assemblyName = assembly?.GetName().Name ?? "Unknown";
+
+            // Вывод заголовка сборки
+            Console.WriteLine("\nСостав сборки \"" + assemblyName + ".dll\":");
+            Console.WriteLine(zeroLevel);
+
+            // Перебор типов внутри сборки с выводом информации о них
+            foreach (var type in assembly!.GetTypes())
+                PrintTypeInfo(type, flags);
+
+            // Завершение блока информации о сборке
+            Console.WriteLine("Конец сборки");
+
+            // Сброс цвета
+            Console.ResetColor();
+
+        }
+        catch (BadImageFormatException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (System.IO.FileNotFoundException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (System.IO.PathTooLongException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (System.Security.SecurityException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        // Неизвестная ошибка
+        catch (Exception ex)
+        {
+            var report = new StringBuilder()
+                .AppendLine(ex.Message)
+                .AppendLine("Источник: " + ex.Source)
+                .AppendLine(ex.StackTrace);
+            Console.WriteLine(report);
+        }
     }
 }

@@ -16,6 +16,7 @@ public static class Comparator
     /// <typeparam name="TSource">Объект коллекции</typeparam>
     /// <typeparam name="TKey">Тип, которым представлен атрибут объекта коллекции</typeparam>
     /// <param name="keySelector">Указатель на атрибут для сортировки коллекции</param>
+    /// <exception cref="NullReferenceException">В качестве объекта сравнения передан null</exception>
     public static IComparer<TSource> GetComparator<TSource, TKey>(Func<TSource, TKey?> keySelector) =>
         new KeySelectorComparer<TSource, TKey?>(keySelector);
 }
@@ -30,7 +31,7 @@ file class KeySelectorComparer<TSource, TKey> : IComparer<TSource>
     public int Compare(TSource? obj1, TSource? obj2)
     {
         if (obj1 == null || obj2 == null)
-            throw new ArgumentException("Некорректные значения для сравнения");
+            throw new NullReferenceException("Некорректные значения для сравнения");
 
         return comparer.Compare(keySelector(obj1), keySelector(obj2));
     }
