@@ -7,18 +7,21 @@
     public static void Main(string[] args)
     {
         Start(out Stopwatch timer);
-
-        //Console.Write("Нажмите любую клавишу для продолжения...");
-        //Console.ReadKey();
-        //Console.Write('\r' + new string(' ', displayLength));
+#if RELEASE
+        Console.Write("Нажмите любую клавишу для продолжения...");
+        Console.ReadKey();
+        Console.Write('\r' + new string(' ', displayLength) + '\r');
+#endif
 
         
 
         End(ref timer);
-        //Console.ReadKey();
+#if RELEASE
+        Console.ReadKey();
+#endif
     }
 
-
+    
 
     private static void Start(out Stopwatch timer)
     {
@@ -41,6 +44,7 @@
     private static void End(ref Stopwatch timer)
     {
         timer.Stop();
+        (long mByteAlloc, long kByteAlloc, long byteAlloc) = GetTotalAlloc();
 
         Display.Print
         (
@@ -50,12 +54,24 @@
             "Программа завершена"
 #if DEBUG
             , $"Время выполнения: {timer.ElapsedMilliseconds} мс. или {timer.ElapsedMilliseconds / 1000} сек."
-#endif
+            , $"Использовано памяти: {mByteAlloc} МБ. {kByteAlloc} КБ. {byteAlloc} Б."
+
         );
 
-#if DEBUG
         Reflection.Print();
+#else
+        );
 #endif
+
+        static (long mByteAlloc, long kByteAlloc, long byteAlloc) GetTotalAlloc()
+        {
+            long totalBytesAlloc = GC.GetTotalAllocatedBytes();
+
+            long mByteAlloc = Math.DivRem(totalBytesAlloc, (long)Math.Pow(2, 20), out totalBytesAlloc);
+            long kByteAlloc = Math.DivRem(totalBytesAlloc, (long)Math.Pow(2, 10), out totalBytesAlloc);
+
+            return (mByteAlloc, kByteAlloc, totalBytesAlloc);
+        }
     }
 }
 
