@@ -13,7 +13,7 @@
         Console.Write('\r' + new string(' ', displayLength) + '\r');
 #endif
 
-        
+
 
         End(ref timer);
 #if RELEASE

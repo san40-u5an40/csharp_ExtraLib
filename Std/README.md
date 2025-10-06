@@ -184,9 +184,11 @@ for(int i = 0; i < int.MaxValue; i++)
  - ReflectionAttribute(BindingFlags(optional)) - Атрибут для отметки класса о необходимости осуществления его рефлексивного анализа методом Reflection.Print();
 
 Статические методы:
- - Print() - Выводит информацию о всех классах, имеющих атрибут ReflectionAttribute;
- - Print(Type, BindingFlags(optional)) - Выводит рефлексивную информацию о переданном в параметр типе согласно указанным флагам (не отображает информацию о классах, имеющих атрибуты). 
+ - Print() - Выводит информацию о всех пользовательских типах, имеющих атрибут ReflectionAttribute (только этот метод связан с использованием атрибута);
+ - Print(Type, BindingFlags(optional)) - Выводит рефлексивную информацию о переданном в параметр типе согласно указанным флагам.
+ - Print(Assembly, BindingFlags(optional)) - Выводит рефлексивную информацию о переданной в параметр сборке.
  - Print(String, BindingFlags(optional)) - Выводит рефлексивную информацию о сборке, путь которой передан в параметр метода.
+ - Print(String, String, BindingFlags(optional)) - Выводит рефлексивную информацию о сборке, чей путь указан, и содержащимся в ней типе, название которого указано вторым параметром.
 
 ### Примеры кода:
 Использование через атрибут:
@@ -284,7 +286,7 @@ public class ClassTest
 // Конец сборки
 ```
 
-Использование без указания атрибута (поисследуем класс String):
+Использование по ссылке на тип (поисследуем класс String):
 ```C#
 // Main:
 Reflection.Print(typeof(System.String));
@@ -365,9 +367,28 @@ Reflection.Print(typeof(System.String));
 // Конец сборки
 ```
 
+Использование по ссылке на сборку:
+```C#
+Reflection.Print(Assembly.GetAssembly(typeof(Regex)));
+// Выведет все классы, входящие в состав "System.Text.RegularExpressions.dll"
+```
+
 Использование через указание пути сборки:
 ```C#
-                              ↓ - экранизация знака "\"
-string path = "*Какой-то путь*\\*Название сборки*.dll";
-    Reflection.Print(path);
+                         ↓ - экранизация знака "\"
+string pathAssembly = "D:\\csharp\\projects\\ExtraLib\\bin\\Debug\\net9.0\\Text.dll";
+Reflection.Print(pathAssembly);
+```
+
+Использование через указание пути сборки и названия класса:
+```C#
+                         ↓ - экранизация знака "\"
+string pathAssembly = "D:\\csharp\\projects\\ExtraLib\\bin\\Debug\\net9.0\\Std.dll";
+
+Reflection.Print(pathAssembly, "Comparator");
+// Или по полному названию
+Reflection.Print(pathAssembly, "Std.Comparator");
+
+// Если полученную сборку не удастся открыть, будет выведено сообщение из Exception
+// Could not load file or assembly 'D:\csharp\projects\ExtraLib\bin\Debug\net9.0\Std.dll'. Системе не удается найти указанный путь.
 ```
