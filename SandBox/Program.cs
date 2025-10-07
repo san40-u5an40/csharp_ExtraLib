@@ -1,27 +1,20 @@
-﻿public static class Program
+﻿//#define TESTS
+//#define REFLECTION
+
+public static class Program
 {
     private const string programName = "*НАЗВАНИЕ ПРОГРАММЫ*";
     private const byte displayLength = 130;
     private const char displayChar = '-';
 
-    public static void Main(string[] args)
+    internal static void Sandbox(string[] args)
     {
         Start(out Stopwatch timer);
-#if RELEASE
-        Console.Write("Нажмите любую клавишу для продолжения...");
-        Console.ReadKey();
-        Console.Write('\r' + new string(' ', displayLength) + '\r');
-#endif
 
 
 
         End(ref timer);
-#if RELEASE
-        Console.ReadKey();
-#endif
     }
-
-    
 
     private static void Start(out Stopwatch timer)
     {
@@ -39,29 +32,23 @@
         );
 
         timer = Stopwatch.StartNew();
+
+#if RELEASE
+        // Для релиза удобно начинать программу по нажатию
+        Console.Write("Нажмите любую клавишу для продолжения...");
+        Console.ReadKey();
+        Console.Write('\r' + new string(' ', displayLength) + '\r');
+#endif
     }
 
     private static void End(ref Stopwatch timer)
     {
         timer.Stop();
-        (long mByteAlloc, long kByteAlloc, long byteAlloc) = GetTotalAlloc();
 
-        Display.Print
-        (
-            Display.Type.End,
-            displayLength,
-            displayChar,
-            "Программа завершена"
 #if DEBUG
-            , $"Время выполнения: {timer.ElapsedMilliseconds} мс. или {timer.ElapsedMilliseconds / 1000} сек."
-            , $"Использовано памяти: {mByteAlloc} МБ. {kByteAlloc} КБ. {byteAlloc} Б."
+        // В режиме DEBUG удобно иметь информацию об аллокациях
 
-        );
-
-        Reflection.Print();
-#else
-        );
-#endif
+        (long mByteAlloc, long kByteAlloc, long byteAlloc) = GetTotalAlloc();
 
         static (long mByteAlloc, long kByteAlloc, long byteAlloc) GetTotalAlloc()
         {
@@ -72,6 +59,45 @@
 
             return (mByteAlloc, kByteAlloc, totalBytesAlloc);
         }
+#endif
+
+        Display.Print
+        (
+            Display.Type.End,
+            displayLength,
+            displayChar,
+            "Программа завершена"
+
+#if DEBUG
+            // Вывод информации о времени выполнения программ и аллокациях в DEBUG
+
+            , $"Время выполнения: {timer.ElapsedMilliseconds} мс. или {timer.ElapsedMilliseconds / 1000} сек."
+            , $"Использовано памяти: {mByteAlloc} МБ. {kByteAlloc} КБ. {byteAlloc} Б."
+#endif
+        );
+
+#if RELEASE
+        // Завершать программу в RELEASE тоже удобно по нажатию клавиши
+        Console.ReadKey();
+#endif
+    }
+
+    public static void Main(string[] args)
+    {
+// Обычный режим функционирования программы
+#if !TESTS && !REFLECTION
+        Sandbox(args);
+#endif
+
+// В режиме TESTS реализует только запуск теста, функционал обычного режима отбрасывается
+#if TESTS && RELEASE
+        Tests.Runner.Run();
+#endif
+
+// В режиме REFLECTION аналогично режиму TESTS
+#if REFLECTION
+        Reflection.Print();
+#endif
     }
 }
 

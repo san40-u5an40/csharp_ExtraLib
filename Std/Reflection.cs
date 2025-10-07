@@ -247,7 +247,7 @@ public static class Reflection
         Console.WriteLine("\nСостав сборки \"" + assemblyName + ".dll\":");
         Console.WriteLine(zeroLevel);
 
-        // Вивод информации об одном типе (либо если он указан вместе со сборкой, либо если он указан один)
+        // Вывод информации об одном типе (либо если он указан вместе со сборкой, либо если он указан один)
         if (typePrintInfo == TypePrintInfo.OnlyType || typePrintInfo == TypePrintInfo.FullInfo)
             PrintTypeInfo(type!, flags);
         // Если же указана только сборка, то вывод информации о всех её типах
@@ -373,7 +373,7 @@ public static class Reflection
         if (string.IsNullOrEmpty(path))
             return;
 
-        // Если полуичлось открыть сборку, то выводим информацию о ней, если не получилось, то вывод ошибки
+        // Если получилось открыть сборку, то выводим информацию о ней, если не получилось, то вывод ошибки
         if (TryOpenAssembly(path, out string? error, out Assembly? assembly))
             PrintInfo(null, assembly, flags);
         else

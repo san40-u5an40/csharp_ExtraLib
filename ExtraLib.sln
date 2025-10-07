@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1099C8BF-9BC1-4562-B5E0-AE753FA40EC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{E715A67B-CB55-4A5B-B343-7E301E03C76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E715A67B-CB55-4A5B-B343-7E301E03C76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E715A67B-CB55-4A5B-B343-7E301E03C76C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1099C8BF-9BC1-4562-B5E0-AE753FA40EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1099C8BF-9BC1-4562-B5E0-AE753FA40EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1099C8BF-9BC1-4562-B5E0-AE753FA40EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1099C8BF-9BC1-4562-B5E0-AE753FA40EC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

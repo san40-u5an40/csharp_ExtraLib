@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Std\Std.csproj" />
+    <ProjectReference Include="..\Tests\Tests.csproj" />
     <ProjectReference Include="..\Text\Text.csproj" />
   </ItemGroup>
 
