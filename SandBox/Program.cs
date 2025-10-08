@@ -16,6 +16,8 @@ public static class Program
         End(ref timer);
     }
 
+
+
     private static void Start(out Stopwatch timer)
     {
         byte displaySpace = 5;
