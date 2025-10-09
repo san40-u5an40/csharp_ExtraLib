@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Std;
+namespace ConsoleHelper;
 
 /// <summary>
 /// Класс со вспомогательными методами по работе в консоли
 /// </summary>
-public static class ConsoleHelper
+public static class ConsoleExtension
 {
     /// <summary>
     /// Метод, похожий на подобные try-методы, пробующий записать строку из консоли

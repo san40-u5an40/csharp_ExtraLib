@@ -13,7 +13,7 @@ public static class Program
     {
         Start(out Stopwatch timer);
 
-
+        
 
         End(ref timer);
     }
@@ -54,7 +54,7 @@ public static class Program
 #if DEBUG
         // В режиме DEBUG удобно иметь информацию об аллокациях
         long totalBytesAlloc = GC.GetTotalAllocatedBytes();
-        var size = Converter.ToSize(totalBytesAlloc);
+        var size = Bytes.ToSize(totalBytesAlloc);
 #endif
 
         Display.Print

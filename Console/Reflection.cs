@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Std;
+namespace ConsoleHelper;
 
 /// <summary>
 /// Атрибут для отметки пользовательского типа, требующего рефлексивный анализ

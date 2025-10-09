@@ -13,6 +13,7 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Console\ConsoleHelper.csproj" />
     <ProjectReference Include="..\Std\Std.csproj" />
     <ProjectReference Include="..\Text\Text.csproj" />
   </ItemGroup>

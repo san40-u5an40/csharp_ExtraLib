@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Console\ConsoleHelper.csproj" />
     <ProjectReference Include="..\Std\Std.csproj" />
     <ProjectReference Include="..\Tests\Tests.csproj" />
     <ProjectReference Include="..\Text\Text.csproj" />

@@ -9,3 +9,4 @@ global using System.Threading.Tasks;
 global using System.IO;
 
 global using Std;
+global using ConsoleHelper;
