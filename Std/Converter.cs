@@ -27,6 +27,5 @@ public static class Converter
 /// </summary>
 public readonly record struct Size(long GByte, long MByte, long KByte, long Byte)
 {
-    public override string ToString() => $"{GByte} Гбайт, {MByte} Мбайт, {KByte} Кбайт {Byte} байт";
+    public override string ToString() => $"{GByte} Гбайт, {MByte} Мбайт, {KByte} Кбайт, {Byte} байт";
 }
-    

@@ -1,6 +1,8 @@
 ﻿//#define TESTS
 //#define REFLECTION
 
+namespace SandBox;
+
 public static class Program
 {
     private const string programName = "*НАЗВАНИЕ ПРОГРАММЫ*";
@@ -18,6 +20,7 @@ public static class Program
 
 
 
+    //Настройка окна консоли и вывод начального дисплея программы
     private static void Start(out Stopwatch timer)
     {
         byte displaySpace = 5;
@@ -43,24 +46,15 @@ public static class Program
 #endif
     }
 
+    // Вывод заключительного дисплея программы
     private static void End(ref Stopwatch timer)
     {
         timer.Stop();
 
 #if DEBUG
         // В режиме DEBUG удобно иметь информацию об аллокациях
-
-        (long mByteAlloc, long kByteAlloc, long byteAlloc) = GetTotalAlloc();
-
-        static (long mByteAlloc, long kByteAlloc, long byteAlloc) GetTotalAlloc()
-        {
-            long totalBytesAlloc = GC.GetTotalAllocatedBytes();
-
-            long mByteAlloc = Math.DivRem(totalBytesAlloc, (long)Math.Pow(2, 20), out totalBytesAlloc);
-            long kByteAlloc = Math.DivRem(totalBytesAlloc, (long)Math.Pow(2, 10), out totalBytesAlloc);
-
-            return (mByteAlloc, kByteAlloc, totalBytesAlloc);
-        }
+        long totalBytesAlloc = GC.GetTotalAllocatedBytes();
+        var size = Converter.ToSize(totalBytesAlloc);
 #endif
 
         Display.Print
@@ -72,9 +66,8 @@ public static class Program
 
 #if DEBUG
             // Вывод информации о времени выполнения программ и аллокациях в DEBUG
-
             , $"Время выполнения: {timer.ElapsedMilliseconds} мс. или {timer.ElapsedMilliseconds / 1000} сек."
-            , $"Использовано памяти: {mByteAlloc} МБ. {kByteAlloc} КБ. {byteAlloc} Б."
+            , $"Использовано памяти: {size.GByte} ГБ. {size.MByte} МБ. {size.KByte} КБ. {size.Byte} Б."
 #endif
         );
 
@@ -84,20 +77,24 @@ public static class Program
 #endif
     }
 
+    // В зависимости от режима в main активириуются разные блоки кода:
+    // - Обычный режим для тестирования библиотек в методе SandBox
+    // - Режим для тестирования библиотек
+    // - Режим для вывода рефлексивной информации о пользовательских типах, помеченных атрибутом Reflection
     public static void Main(string[] args)
     {
-// Обычный режим функционирования программы
 #if !TESTS && !REFLECTION
+        // Обычный режим функционирования программы
         Sandbox(args);
 #endif
 
-// В режиме TESTS реализует только запуск теста, функционал обычного режима отбрасывается
 #if TESTS && RELEASE
+        // В режиме TESTS реализует только запуск теста или рефлексии, функционал обычного режима отбрасывается
         Tests.Runner.Run();
 #endif
 
-// В режиме REFLECTION аналогично режиму TESTS
 #if REFLECTION
+        // В режиме REFLECTION аналогично режиму TESTS
         Reflection.Print();
 #endif
     }

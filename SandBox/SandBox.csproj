@@ -8,6 +8,7 @@
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
 	<PublishAot>true</PublishAot>
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
