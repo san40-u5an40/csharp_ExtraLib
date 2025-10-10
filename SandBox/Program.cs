@@ -1,10 +1,12 @@
 ﻿//#define TESTS
 //#define REFLECTION
+//#define ISOLATION
 
 namespace SandBox;
 
-public static class Program
+public class Program
 {
+#if !ISOLATION
     private const string programName = "*НАЗВАНИЕ ПРОГРАММЫ*";
     private const byte displayLength = 130;
     private const char displayChar = '-';
@@ -13,7 +15,7 @@ public static class Program
     {
         Start(out Stopwatch timer);
 
-        
+
 
         End(ref timer);
     }
@@ -76,14 +78,15 @@ public static class Program
         Console.ReadKey();
 #endif
     }
+#endif // ← ISOLATION
 
-    // В зависимости от режима в main активириуются разные блоки кода:
+    // В зависимости от режима в main активируются разные блоки кода:
     // - Обычный режим для тестирования библиотек в методе SandBox
     // - Режим для тестирования библиотек
     // - Режим для вывода рефлексивной информации о пользовательских типах, помеченных атрибутом Reflection
     public static void Main(string[] args)
     {
-#if !TESTS && !REFLECTION
+#if !TESTS && !REFLECTION && !ISOLATION
         // Обычный режим функционирования программы
         Sandbox(args);
 #endif
@@ -96,6 +99,11 @@ public static class Program
 #if REFLECTION
         // В режиме REFLECTION аналогично режиму TESTS
         Reflection.Print();
+#endif
+
+#if ISOLATION
+        // В режиме изоляции работает только этот блок (режим для компиляции приложений)
+        
 #endif
     }
 }
