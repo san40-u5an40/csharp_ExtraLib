@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Std;
+namespace ExtraLib;
 
 /// <summary>
 /// Статический класс для создания объектов IComparer по селектору объекта<br/>

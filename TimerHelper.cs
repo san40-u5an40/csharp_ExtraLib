@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Std;
+namespace ExtraLib;
 
 /// <summary>
 /// Класс предназначенный для использования экспоненциальных таймеров

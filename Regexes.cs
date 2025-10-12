@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Text;
+namespace ExtraLib;
 
 /// <summary>
 /// Класс для шаблонных преобразований текста с помощью регулярных выражений

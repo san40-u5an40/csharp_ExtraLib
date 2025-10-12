@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleHelper;
+namespace ExtraLib;
 
 /// <summary>
 /// Класс со вспомогательными методами по работе в консоли

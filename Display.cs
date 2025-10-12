@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace ConsoleHelper;
+namespace ExtraLib;
 
 /// <summary>
 /// Класс для настройки консольного окна, а также вывода дисплея

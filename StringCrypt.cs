@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Text;
+namespace ExtraLib;
 
 /// <summary>
 /// Строковый кодировщик

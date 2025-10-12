@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Std;
+namespace ExtraLib;
 
 /// <summary>
-/// Класс для конвертирования различных единиц исчисления
+/// Класс для конвертирования байтов
 /// </summary>
 public static class Bytes
 {
