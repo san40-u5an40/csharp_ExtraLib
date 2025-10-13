@@ -1,69 +1,17 @@
-# ExtraLib
-В этом репозитории представлена библиотека классов, которая была сформирована в ходе моего обучения разработке на .NET/C#. Какие-то классы могут быть использованы в широком круге задач, какие-то специфичны для консольной разработки или же конкретной задачи приложения.
-
-## Примеры кода с их участием:
-```C#
-Array.Sort(array, Comparator.GetComparator<User, string>(p => p.Name));
-// Сортировка массива объектов "User" по имени
-```
-
-```C#
-var GitHub = "77 65 72 38 34 31 79 39 65 72 38 34 24 3E 2D".Decrypt(-4, StringCrypter.Type.Hex);
-Console.WriteLine(GitHub);
-// Дешифрует с помощью сдвига набор символов, представленный в HEX-формате
-
-// Вывод:
-// san40-u5an40 :)
-```
-
-```C#
-var phones = new string[]
-{
-    "88005553535",
-    "+78005553535",
-    "+7 (800) 555-35-35",
-    "7 800 555 35 35",
-    "8 (800) 555 35-35"
-};
-
-foreach(var phone in phones)
-{
-    long numbers = Regexes.PhoneParse(phone);            // Парсит все номера в число long, убирая первые "+7" или "8"
-    Console.WriteLine($"{numbers:+7 (###) ###-##-##}");  // Все в одном формате
-}
-
-// Вывод:
-// +7 (800) 555-35-35
-// +7 (800) 555-35-35
-// +7 (800) 555-35-35
-// +7 (800) 555-35-35
-// +7 (800) 555-35-35
-```
-
-```C#
-Display.Print(Display.Type.Center, 40, '-', "Первая фраза", "Вторая фраза");
-
-// Вывод:
-// /*----------------------------------------*/
-// /*--------------Первая фраза--------------*/
-// /*--------------Вторая фраза--------------*/
-// /*----------------------------------------*/
-```
-
 ## Оглавление:
 Полезны в широком круге задач:
-- [Regexes]()
-- [Bytes]()
-- [Comparator]()
-- [TimerHelper]()
+- [Regexes](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#regexes)
+- [Bytes](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#bytes)
+- [Comparator](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#comparator)
+- [TimerHelper](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#timerhelper)
 
 Полезны при консольной разработке:
-- [ConsoleExtension]()
-- [Display]()
+- [ConsoleExtension](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#consoleextension)
+- [Display](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#display)
 
 Для специфичных задач:
-- [StringCrypt]()
-- [Reflection]()
+- [StringCrypt](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#stringcrypt)
+- [Reflection](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main/ExtraLib#reflection)
 
 ## Regexes
 ### Назначение:
@@ -230,7 +178,7 @@ for(int i = 0; i < int.MaxValue; i++)
 ### Примеры кода:
 TryReadLine
 ```C#
-while (!ConsoleHelper.TryReadLine(out string? input))
+while (!ConsoleExtension.TryReadLine(out string? input))
 	Console.WriteLine("Некорректный ввод. Повторите попытку.");
 ```
 
@@ -239,7 +187,7 @@ WriteColor
 internal static void PrintWelcome(string name)
 {
     Console.Write("Добро пожаловать в программу, ");
-    ConsoleHelper.WriteColor(name, ConsoleColor.Red);
+    ConsoleExtension.WriteColor(name, ConsoleColor.Red);
     Console.Write("!\n");
 }
 ```

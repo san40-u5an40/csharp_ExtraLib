@@ -41,7 +41,7 @@ public class ComparatorTests
     [Benchmark]
     public void Array_OrderBy()
     {
-        var res = userArr.OrderBy(p => p.Age).ToArray();
+        userArr = userArr.OrderBy(p => p.Age).ToArray();
     }
 
     [Benchmark]
@@ -53,7 +53,7 @@ public class ComparatorTests
     [Benchmark]
     public void List_OrderBy()
     {
-        var res = userList.OrderBy(p => p.Age).ToList();
+        userList = userList.OrderBy(p => p.Age).ToList();
     }
 }
 
@@ -62,7 +62,7 @@ public record User(string Name, string Company, int Age);
 // Результат:
 // | Method           | Mean     | Error    | StdDev   | Rank | Gen0    | Allocated |
 // |----------------- |---------:|---------:|---------:|-----:|--------:|----------:|
-// | Array_Comparator | 54.68 us | 0.946 us | 0.885 us |    1 |       - |      80 B |
-// | Array_OrderBy    | 65.73 us | 1.226 us | 1.087 us |    2 | 11.4746 |   24288 B |
-// | List_Comparator  | 56.02 us | 0.609 us | 0.540 us |    1 |       - |      80 B |
-// | List_OrderBy     | 64.37 us | 0.900 us | 0.798 us |    2 | 11.5967 |   24320 B |
+// | Array_Comparator | 33.21 us | 0.643 us | 0.602 us |    2 |       - |      96 B |
+// | Array_OrderBy    | 20.46 us | 0.249 us | 0.220 us |    1 | 11.5662 |   24304 B |
+// | List_Comparator  | 34.93 us | 0.681 us | 0.976 us |    2 |       - |      96 B |
+// | List_OrderBy     | 20.19 us | 0.228 us | 0.202 us |    1 | 11.6272 |   24336 B |
