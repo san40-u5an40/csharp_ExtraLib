@@ -52,18 +52,18 @@ Display.Print(Display.Type.Center, 40, '-', "Первая фраза", "Втор
 
 ## Оглавление:
 Полезны в широком круге задач:
-- [Regexes](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#regexes)
-- [Bytes](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#bytes)
-- [Comparator](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#comparator)
-- [TimerHelper](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#timerhelper)
+- [Regexes]()
+- [Bytes]()
+- [Comparator]()
+- [TimerHelper]()
 
 Полезны при консольной разработке:
-- [ConsoleExtension](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#consoleextension)
-- [Display](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#display)
+- [ConsoleExtension]()
+- [Display]()
 
 Для специфичных задач:
-- [StringCrypt](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#stringcrypt)
-- [Reflection](https://github.com/san40-u5an40/csharp_ExtraLib/tree/main?tab=readme-ov-file#reflection)
+- [StringCrypt]()
+- [Reflection]()
 
 ## Regexes
 ### Назначение:
