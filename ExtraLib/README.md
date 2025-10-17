@@ -174,6 +174,7 @@ for(int i = 0; i < int.MaxValue; i++)
 Статические методы:
  - TryReadLine - Работает также как и схожие методы: записывает в out-параметр результат чтения из консоли, возвращая содержит ли этот результат символы.
  - WriteColor - Выводит в консоль текст указанного цвета.
+ - CleanLine - Очищает одну строку от текста.
 
 ### Примеры кода:
 TryReadLine
@@ -190,6 +191,13 @@ internal static void PrintWelcome(string name)
     ConsoleExtension.WriteColor(name, ConsoleColor.Red);
     Console.Write("!\n");
 }
+```
+
+CleanLine
+```C#
+Console.Write("Текст на 3 секунды...");
+Thread.Sleep(3000);
+ConsoleExtension.CleanLine();
 ```
 
 ## Display

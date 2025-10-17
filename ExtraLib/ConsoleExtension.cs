@@ -41,4 +41,10 @@ public static class ConsoleExtension
         Console.Write(msg);
         Console.ResetColor();
     }
+
+    /// <summary>
+    /// Очищает строку от текста
+    /// </summary>
+    public static void CleanLine() =>
+        Console.Write('\r' + new string(' ', Console.WindowWidth) + '\r');
 }
